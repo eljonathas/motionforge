@@ -1,5 +1,5 @@
 {
-  "name": "reelcraft",
+  "name": "@eljonathas/reelcraft",
   "version": "0.1.0",
   "description": "Tooling around HyperFrames for agent-made motion graphics: scaffolding, offline vendoring, static checks, licensed assets, memory and an MCP server.",
   "type": "module",
@@ -48,5 +48,8 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.2",
     "vitest": "5.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

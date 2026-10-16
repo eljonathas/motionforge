@@ -12,7 +12,7 @@
   "mcpServers": {
     "reelcraft": {
       "command": "npx",
-      "args": ["-y", "reelcraft", "mcp"]
+      "args": ["-y", "@eljonathas/reelcraft", "mcp"]
     }
   }
 }

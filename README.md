@@ -21,14 +21,14 @@ Pacote npm `reelcraft` (Node 22 ou mais novo; Mac, Windows e Linux). O render é
 que ele não faz.
 
 ```bash
-npx reelcraft new meu-video --resolution portrait   # projeto HyperFrames que renderiza offline
-npx reelcraft vendor [dir]                           # troca CDN por cópias locais em vendor/
-npx reelcraft check [dir] [--json]                   # licenças, URLs remotas, estética de primitivas
-npx reelcraft assets search --kind photo --q "névoa na floresta"
-npx reelcraft assets get pexels:2014422              # baixa e grava a licença em assets/LICENCAS.json
-npx reelcraft memory add "Foto com Ken Burns atrás do título" --kind approved --tags foto,titulo
-npx reelcraft memory search titulo                   # --global para a memória da pessoa
-npx reelcraft mcp                                    # servidor MCP em stdio
+npx @eljonathas/reelcraft new meu-video --resolution portrait   # projeto HyperFrames que renderiza offline
+npx @eljonathas/reelcraft vendor [dir]                           # troca CDN por cópias locais em vendor/
+npx @eljonathas/reelcraft check [dir] [--json]                   # licenças, URLs remotas, estética de primitivas
+npx @eljonathas/reelcraft assets search --kind photo --q "névoa na floresta"
+npx @eljonathas/reelcraft assets get pexels:2014422              # baixa e grava a licença em assets/LICENCAS.json
+npx @eljonathas/reelcraft memory add "Foto com Ken Burns atrás do título" --kind approved --tags foto,titulo
+npx @eljonathas/reelcraft memory search titulo                   # --global para a memória da pessoa
+npx @eljonathas/reelcraft mcp                                    # servidor MCP em stdio
 ```
 
 - `check` sai com código 1 se houver erro (asset sem licença, licença NC/ND em uso, URL remota, cena só de
@@ -47,7 +47,7 @@ npx reelcraft mcp                                    # servidor MCP em stdio
 /plugin install reelcraft@reelcraft
 ```
 
-O plugin declara a pasta `skills/` e o servidor MCP (`npx -y reelcraft mcp`).
+O plugin declara a pasta `skills/` e o servidor MCP (`npx -y @eljonathas/reelcraft mcp`).
 
 ### Desenvolvimento
 
@@ -59,3 +59,6 @@ HYPERFRAMES_BROWSER_PATH=/caminho/do/chrome npm run test:integration   # render 
 
 Os testes dos provedores de assets usam respostas gravadas à mão a partir da documentação pública das APIs; não
 foram conferidos contra os serviços reais.
+
+> **Nome do pacote.** O nome `reelcraft` sem escopo no npm pertence a outro projeto. Use sempre
+> `@eljonathas/reelcraft`; `npx reelcraft` baixaria e executaria um pacote de terceiro.
