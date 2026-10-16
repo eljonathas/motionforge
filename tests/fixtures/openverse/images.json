@@ -1,0 +1,42 @@
+{
+  "result_count": 2,
+  "page_count": 1,
+  "page_size": 2,
+  "page": 1,
+  "results": [
+    {
+      "id": "4bc43a04-ef46-4544-a0c1-63c63f56e276",
+      "title": "Misty forest",
+      "foreign_landing_url": "https://www.flickr.com/photos/example/123",
+      "url": "https://live.staticflickr.com/65535/123_abc_b.jpg",
+      "creator": "Jane Doe",
+      "creator_url": "https://www.flickr.com/photos/example",
+      "license": "by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "provider": "flickr",
+      "source": "flickr",
+      "category": "photograph",
+      "filetype": "jpg",
+      "thumbnail": "https://api.openverse.org/v1/images/4bc43a04-ef46-4544-a0c1-63c63f56e276/thumb/",
+      "attribution": "\"Misty forest\" by Jane Doe is licensed under CC BY 4.0."
+    },
+    {
+      "id": "0aa11bb2-0000-4000-8000-123456789abc",
+      "title": null,
+      "foreign_landing_url": "https://commons.wikimedia.org/wiki/File:Fog.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Fog.jpeg",
+      "creator": null,
+      "creator_url": null,
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "provider": "wikimedia",
+      "source": "wikimedia",
+      "category": "photograph",
+      "filetype": "jpeg",
+      "thumbnail": "https://api.openverse.org/v1/images/0aa11bb2-0000-4000-8000-123456789abc/thumb/",
+      "attribution": null
+    }
+  ]
+}
