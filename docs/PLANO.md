@@ -95,24 +95,51 @@ licença Apache-2.0. O Reelcraft não reescreve render; investe no que o modelo 
 As skills são o produto. Cada uma é curta no `SKILL.md` e aponta para referências em arquivos à parte, que o
 agente lê só quando precisa.
 
+**Revisão de 16/10/2026, depois de ler as skills do HyperFrames.** O HyperFrames já publica cerca de 330 mil
+palavras de skills: regras técnicas do motor, ~100 referências de animação (regras atômicas, 22 blueprints de
+cena, catálogo de transições, adaptadores de GSAP, Lottie, Three.js), direção criativa (house style, "lazy
+defaults" de IA, composição para vídeo, tipografia, paletas, narração, ritmo por batida) e fluxos completos
+(explicador, lançamento de produto, motion graphics, legendas, música). Reescrever isso seria desperdício e criaria
+instruções conflitantes. O que **não** existe lá:
+
+1. **Material real aberto e licenciado.** O `media-use` deles busca no catálogo da HeyGen e pede login no CLI da
+   HeyGen; não há busca em fontes abertas (Pexels, Openverse, Poly Haven…) nem registro de licença por arquivo.
+2. **Realismo fotográfico e cinematográfico.** O repertório deles é de UI, SaaS e tipografia cinética. O próprio
+   "background layer" padrão sugere brilhos radiais, texto fantasma e formas geométricas: exatamente a estética
+   que queremos evitar quando o pedido pede realismo.
+3. **Ilustração e personagens.** Não há sistema de ilustração consistente, personagens com rig, nem sincronia
+   labial (visemas).
+4. **Narrativa visual fora de tecnologia.** Documentário, educação, histórias, jornalismo: lógica de b-roll,
+   planos, metáfora visual a partir de material real.
+5. **Memória de escolhas.** A memória deles é de reuso de assets, não de decisões aprovadas e rejeitadas.
+6. **Medição.** Não há benchmark que diga se as skills melhoram os vídeos.
+
+Por isso o Reelcraft é um **pacote complementar**: as skills dele **delegam** a técnica às skills do HyperFrames
+(`hyperframes-core`, `hyperframes-animation`, `hyperframes-creative`) e cuidam só das seis lacunas acima.
+Quando houver conflito (por exemplo, o fundo decorativo padrão deles num vídeo que pede realismo), a skill do
+Reelcraft diz explicitamente qual regra vale e por quê.
+
 | Skill | Para quê |
 |---|---|
-| `reelcraft` | roteador: lê o pedido e decide quais skills carregar |
-| `direcao` | processo de produção: brief → roteiro → storyboard → cenas → revisão → export; quando parar e mostrar |
-| `oficio-movimento` | princípios de animação aplicados a motion design: antecipação, sobreposição, arcos, espaçamento; tempos e curvas por tipo de elemento |
-| `oficio-composicao` | grade, hierarquia, enquadramento, profundidade em camadas, parallax, câmera virtual |
-| `oficio-tipografia` | tipografia cinética, pares de fontes, ritmo de leitura, legibilidade em tela pequena |
-| `oficio-cor-luz` | paletas, contraste, gradação, luz, sombra, grão, textura, desfoque |
-| `assets` | onde buscar foto, vídeo, ilustração, ícone, Lottie, 3D, textura, fonte, som; como registrar a licença; o que nunca usar |
-| `receitas` | índice da biblioteca de cenas exemplares, com quando usar cada uma |
-| `audio` | narração, alinhamento palavra a palavra, trilha, efeitos, ducking |
-| `personagens` | personagens com ilustração real (SVG ou Lottie com rig), não bonecos de primitivas |
-| `critica` | rubrica para julgar os próprios quadros, incluindo o detector de estética de primitivas |
+| `reelcraft` | roteador: decide se o pedido pede realismo, ilustração ou design gráfico; carrega as skills do Reelcraft certas e aponta as do HyperFrames para a técnica |
+| `realismo` | quando e como usar foto, vídeo e ilustração reais; hierarquia "material antes de forma"; os anti-padrões, incluindo os padrões do HyperFrames que não servem para realismo |
+| `material` | buscar, escolher e baixar assets abertos com licença registrada (`reelcraft assets`); critérios de escolha (enquadramento, espaço para texto, coerência de luz e cor entre planos); o que nunca usar |
+| `cinema-2d5` | profundidade a partir de foto: recorte em camadas, parallax, movimentos de câmera (Ken Burns bem feito, push-in, travelling), luz, sombra, grão, gradação coerente entre planos |
+| `ilustracao` | sistema de ilustração consistente (traço, paleta, proporções), fontes abertas de ilustração, composição de cenas ilustradas |
+| `personagens` | personagens a partir de SVG ou Lottie com rig, poses, ciclos (andar, falar, gesticular), visemas e sincronia com a narração; os 12 princípios aplicados a personagens |
+| `narrativa` | do pedido ao roteiro e à lista de planos para conteúdo fora de tecnologia: b-roll, ritmo de leitura, metáfora visual, como mostrar sem ilustrar literalmente cada palavra |
+| `receitas` | índice da biblioteca de cenas exemplares do Reelcraft (realistas, ilustradas e com personagens) |
+| `critica` | rubrica para julgar os próprios quadros com foco em realismo e material, incluindo o detector de estética de primitivas (`reelcraft check`) |
 | `memoria` | quando lembrar, o que guardar, como recuperar antes de decidir |
 
-**Anti-padrões explícitos** (vão na `direcao` e na `critica`): cena feita só de formas geométricas; fundo
-chapado sem textura nem profundidade; todo elemento entrando com o mesmo fade e a mesma curva; texto centralizado
-em todas as cenas; ícone genérico no lugar de imagem que conte a história; ausência de hierarquia.
+Áudio (narração, trilha, efeitos, mixagem) fica com o `hyperframes-audio` e o `media-use` deles; o Reelcraft só
+acrescenta vozes sem conta da HeyGen (voz do sistema, ElevenLabs ou OpenAI pela chave de quem usa) se o M3 mostrar
+que é preciso.
+
+**Anti-padrões explícitos** (vão no `realismo` e na `critica`): cena feita só de formas geométricas; fundo
+chapado sem textura nem profundidade; brilhos radiais, texto fantasma e formas decorativas como substitutos de
+material real; ícone genérico no lugar de imagem que conte a história; todo elemento entrando com o mesmo fade e
+a mesma curva; planos com luz e cor incoerentes entre si.
 
 ### 5.3 Biblioteca de cenas exemplares (receitas)
 
@@ -135,22 +162,19 @@ As receitas são escritas e revisadas por pessoas (nós e, depois do lançamento
 de cada uma é uma técnica real de motion design, descrita com nossas palavras e com link para a fonte; nenhum
 vídeo ou texto protegido é copiado para o repositório.
 
-### 5.4 Ferramentas (servidor MCP)
+### 5.4 Ferramentas (CLI `reelcraft` e servidor MCP)
 
-| Ferramenta | O que faz |
+O HyperFrames já tem prévia (`preview`), quadros (`snapshot`), checagens de layout e contraste (`check`,
+`validate`), batidas (`beats`) e render. O Reelcraft não duplica nada disso; acrescenta:
+
+| Comando / ferramenta MCP | O que faz |
 |---|---|
-| `projeto_iniciar` | cria a estrutura do projeto e o arquivo de licenças |
-| `assets_buscar` | busca em fontes com licença aberta (foto, vídeo, ilustração, ícone, Lottie, 3D, textura, som) e devolve miniaturas e licença |
-| `assets_baixar` | baixa para `assets/` e registra origem, autor, licença e atribuição exigida |
-| `quadros` | renderiza instantes de uma cena em PNG para o agente ver |
-| `folha_de_contato` | uma imagem com N quadros da cena ou do vídeo |
-| `checar_cena` | contraste, área segura, texto legível, quadros vazios, **proporção de primitivas sem asset real** |
-| `previa` | abre a prévia ao vivo no navegador |
-| `voz` | narração com a voz do sistema (grátis) ou com a chave da pessoa (ElevenLabs, OpenAI) |
-| `alinhar` | tempos de cada palavra da narração |
-| `mixar` | narração, trilha e efeitos com ducking, via ffmpeg |
-| `renderizar` | MP4 final pelo motor |
-| `lembrar` / `recordar` | grava e consulta a memória |
+| `reelcraft new` / `project_new` | cria o projeto pelo `hyperframes init`, com telemetria desligada, bibliotecas copiadas para `vendor/` (render offline), `assets/LICENCAS.json`, `brief.md` e a pasta de memória |
+| `reelcraft vendor` / `vendor` | troca referências a CDN por cópias locais |
+| `reelcraft check` / `check` | licenças de cada asset, nenhuma URL remota, e o **detector de estética de primitivas** |
+| `reelcraft assets search` e `get` / `assets_search`, `assets_get` | busca em fontes abertas (Openverse, Poly Haven, Pexels; depois Unsplash, Pixabay, Freesound) e baixa gravando origem, autor, licença e atribuição |
+| `reelcraft memory` / `memory_add`, `memory_search` | memória de boas escolhas (seção 5.5) |
+| `snapshot`, `render` (só no MCP) | chamam o `hyperframes snapshot` e o `hyperframes render`, para quem usa o MCP sem terminal |
 
 ### 5.5 Memória de boas escolhas
 
@@ -186,11 +210,11 @@ multi-cliente, créditos, notificações, publicação, o dataset hospedado, Pyt
 | Fase | Entrega | Critério de aceite |
 |---|---|---|
 | **M0** | este plano, pesquisa de referências, decisão do motor | mantenedor aprova o caminho |
-| **M1** | MCP mínimo (`projeto_iniciar`, `quadros`, `folha_de_contato`, `renderizar`) sobre o HyperFrames; skills `direcao`, `oficio-movimento`, `critica`; 5 receitas | no Mac do mantenedor, pelo Claude Code com Sonnet, um vídeo de 30 s sem áudio que não seja estética de primitivas |
-| **M2** | `assets_buscar` e `assets_baixar` com licença registrada; skills `assets`, `oficio-composicao`, `oficio-tipografia`, `oficio-cor-luz`; mais 10 receitas | o mesmo pedido gera cenas com foto, vídeo ou ilustração real, todas com licença registrada |
-| **M3** | áudio: `voz`, `alinhar`, `mixar`; skill `audio` | 30 s com narração, do pedido ao MP4, dentro de uma sessão Pro, no Mac e no Windows |
-| **M4** | memória: `lembrar`, `recordar`, hooks; skill `memoria`; benchmark | num conjunto fixo de pedidos, a segunda rodada (com memória) tem nota maior e gasta menos turnos que a primeira |
-| **M5** | Claude Web e Codex; personagens | uma cena do benchmark feita no Claude Web, com prévia e export |
+| **M1** | CLI e MCP (`reelcraft new`, `vendor`, `check`, `assets`, `memory`, `mcp`) sobre o HyperFrames; plugin do Claude Code; skills `reelcraft`, `realismo`, `material`, `critica` | `reelcraft check` reprova uma cena de estética de primitivas e aprova uma com material real licenciado; render offline no Mac, no Windows e no Linux (CI) |
+| **M2** | skills `cinema-2d5` e `narrativa`; 10 receitas realistas com material real e licença registrada | no Mac do mantenedor, pelo Claude Code com Sonnet, um vídeo de 30 s a partir de um pedido fora de tecnologia, com fotos ou vídeos reais e nenhuma cena reprovada pelo detector |
+| **M3** | skills `ilustracao` e `personagens` (rig, ciclos, visemas); 5 receitas ilustradas e com personagem | um personagem ilustrado fala uma frase da narração com boca sincronizada |
+| **M4** | memória: `memory`, hooks do Claude Code, skill `memoria`; benchmark de 20 pedidos | num conjunto fixo de pedidos, a segunda rodada (com memória) tem nota maior e gasta menos turnos que a primeira |
+| **M5** | Claude Web (skills em zip, prévia em artifact) e Codex | uma cena do benchmark feita no Claude Web, com prévia |
 | **M6** | lançamento aberto: documentação, galeria, guia de contribuição de receitas | repositório público, licença, CI verde |
 
 ## 8. Como medimos se funciona
