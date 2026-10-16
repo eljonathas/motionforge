@@ -11,14 +11,14 @@ description: >
 # Material
 
 Todo asset de um projeto vem com origem e licença registradas em `assets/LICENCAS.json`. Sem registro, o
-`npx reelcraft check` reprova o projeto.
+`npx @eljonathas/reelcraft check` reprova o projeto.
 
 ## 1. Buscar
 
 ```bash
-npx reelcraft assets search --kind photo --q "mãos amassando pão, luz de janela"
-npx reelcraft assets search --kind video --q "ondas batendo em rochas, câmera lenta"
-npx reelcraft assets search --kind texture --q "papel kraft"
+npx @eljonathas/reelcraft assets search --kind photo --q "mãos amassando pão, luz de janela"
+npx @eljonathas/reelcraft assets search --kind video --q "ondas batendo em rochas, câmera lenta"
+npx @eljonathas/reelcraft assets search --kind texture --q "papel kraft"
 ```
 
 `--kind`: `photo`, `video`, `texture`, `hdri`, `model`, `illustration`, `icon`, `sfx`.
@@ -53,7 +53,7 @@ Olhe as miniaturas antes de baixar. Para cada candidato, confira:
 ## 3. Baixar e registrar
 
 ```bash
-npx reelcraft assets get pexels:12345        # no diretório do projeto (ou --dir <projeto>)
+npx @eljonathas/reelcraft assets get pexels:12345        # no diretório do projeto (ou --dir <projeto>)
 ```
 
 O `get` baixa para `assets/<tipo>/` e grava em `assets/LICENCAS.json`: arquivo, fonte, id, título, autor, link,

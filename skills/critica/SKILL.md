@@ -15,7 +15,7 @@ Você vê o vídeo pelos quadros, não pelo código. Julgue o que está na tela.
 ## 1. Gere a evidência
 
 ```bash
-npx reelcraft check                                  # licenças, URLs remotas, estética de primitivas
+npx @eljonathas/reelcraft check                                  # licenças, URLs remotas, estética de primitivas
 npx hyperframes check                                # layout, contraste, runtime
 npx hyperframes snapshot --frames 8                  # quadros espaçados do vídeo
 npx hyperframes snapshot --composition <cena> --frames 4   # uma cena
@@ -63,7 +63,7 @@ Uma rodada de crítica por vez; não reescreva o vídeo inteiro por causa de uma
 Mostre a folha de quadros antes do render final. Quando a pessoa aprovar, rejeitar ou corrigir algo, registre:
 
 ```bash
-npx reelcraft memory add "título branco centralizado sobre foto de multidão" \
+npx @eljonathas/reelcraft memory add "título branco centralizado sobre foto de multidão" \
   --kind rejected --scene-type abertura \
   --reason "o texto cobria os rostos; ela pediu o texto no céu"
 ```

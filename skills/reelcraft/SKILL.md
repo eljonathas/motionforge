@@ -30,17 +30,17 @@ como se fosse um slide de tecnologia.
 ## 2. Monte o projeto
 
 ```bash
-npx reelcraft new <nome> --resolution landscape   # ou portrait / square
+npx @eljonathas/reelcraft new <nome> --resolution landscape   # ou portrait / square
 ```
 
 Isso cria o projeto do HyperFrames com as bibliotecas em `vendor/` (render offline), `assets/LICENCAS.json`,
 `brief.md` e a pasta de memória, com a telemetria do HyperFrames desligada. Se o projeto já existe, rode
-`npx reelcraft vendor` uma vez para trocar CDNs por cópias locais.
+`npx @eljonathas/reelcraft vendor` uma vez para trocar CDNs por cópias locais.
 
 ## 3. Consulte a memória
 
 ```bash
-npx reelcraft memory search "<assunto ou estilo>" --scene-type <tipo de cena>
+npx @eljonathas/reelcraft memory search "<assunto ou estilo>" --scene-type <tipo de cena>
 ```
 
 Lições aprovadas pesam mais que suas preferências gerais; lições rejeitadas são coisas a **não** repetir.
@@ -65,12 +65,12 @@ HyperFrames.
 ## 5. Antes de renderizar
 
 ```bash
-npx reelcraft check          # licenças, URLs remotas, estética de primitivas
+npx @eljonathas/reelcraft check          # licenças, URLs remotas, estética de primitivas
 npx hyperframes check        # layout, contraste, runtime
 ```
 
 Depois siga a `critica`. Ao final, registre o que a pessoa aprovou, rejeitou ou corrigiu:
 
 ```bash
-npx reelcraft memory add "<a decisão>" --kind approved|rejected|edited --scene-type <tipo> --reason "<o porquê>"
+npx @eljonathas/reelcraft memory add "<a decisão>" --kind approved|rejected|edited --scene-type <tipo> --reason "<o porquê>"
 ```
