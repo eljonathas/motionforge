@@ -1,0 +1,10 @@
+{
+  "Diffuse": {
+    "1k": { "jpg": { "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_diff_1k.jpg", "size": 500000, "md5": "x" }, "png": { "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/brick_wall_001/brick_wall_001_diff_1k.png", "size": 900000, "md5": "y" } },
+    "2k": { "jpg": { "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_001/brick_wall_001_diff_2k.jpg", "size": 1500000, "md5": "z" } }
+  },
+  "nor_gl": {
+    "1k": { "jpg": { "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_nor_gl_1k.jpg", "size": 1, "md5": "n" } }
+  },
+  "blend": { "1k": { "blend": { "url": "https://dl.polyhaven.org/x.blend", "size": 1, "md5": "b" } } }
+}

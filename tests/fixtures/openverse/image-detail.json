@@ -1,0 +1,15 @@
+{
+  "id": "4bc43a04-ef46-4544-a0c1-63c63f56e276",
+  "title": "Misty forest",
+  "foreign_landing_url": "https://www.flickr.com/photos/example/123",
+  "url": "https://live.staticflickr.com/65535/123_abc_b.jpg",
+  "creator": "Jane Doe",
+  "creator_url": "https://www.flickr.com/photos/example",
+  "license": "by",
+  "license_version": "4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": "flickr",
+  "filetype": "jpg",
+  "thumbnail": "https://api.openverse.org/v1/images/4bc43a04-ef46-4544-a0c1-63c63f56e276/thumb/",
+  "attribution": "\"Misty forest\" by Jane Doe is licensed under CC BY 4.0."
+}
