@@ -1,18 +1,17 @@
 # Skills
 
-Catálogo planejado (detalhes em `docs/PLANO.md`, seção 5.2). Nenhuma skill escrita ainda.
+Catálogo planejado (detalhes em `docs/PLANO.md`, seção 5.2). As skills do Reelcraft complementam as do
+HyperFrames e delegam a elas a técnica do motor, da animação e da direção gráfica.
 
 | Skill | Fase |
 |---|---|
 | `reelcraft` (roteador) | M1 |
-| `direcao` | M1 |
-| `oficio-movimento` | M1 |
+| `realismo` | M1 |
+| `material` | M1 |
 | `critica` | M1 |
-| `assets` | M2 |
-| `oficio-composicao` | M2 |
-| `oficio-tipografia` | M2 |
-| `oficio-cor-luz` | M2 |
-| `receitas` | M1–M2 |
-| `audio` | M3 |
+| `cinema-2d5` | M2 |
+| `narrativa` | M2 |
+| `receitas` | M2 |
+| `ilustracao` | M3 |
+| `personagens` | M3 |
 | `memoria` | M4 |
-| `personagens` | M5 |
