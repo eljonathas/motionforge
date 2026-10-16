@@ -23,14 +23,15 @@ describe("Claude Code plugin packaging", () => {
 
   it("keeps the plugin version in step with the npm package", () => {
     expect(plugin.version).toBe(pkg.version);
-    expect(plugin.name).toBe(pkg.name);
+    expect(pkg.name).toBe(`@eljonathas/${plugin.name}`);
   });
 
-  it("declares the skills folder and starts the MCP server with npx", () => {
+  it("declares the skills folder and starts the MCP server from the scoped package", () => {
+    // The bare npm name "reelcraft" belongs to another project; npx must never resolve to it.
     expect(plugin.skills).toEqual(["./skills/"]);
     expect(plugin.mcpServers["reelcraft"]).toEqual({
       command: "npx",
-      args: ["-y", "reelcraft", "mcp"],
+      args: ["-y", pkg.name, "mcp"],
     });
     expect(pkg.bin["reelcraft"]).toBe("dist/cli.js");
   });
