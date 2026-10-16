@@ -1,0 +1,27 @@
+{
+  "brick_wall_001": {
+    "name": "Brick Wall 001",
+    "type": 1,
+    "date_published": 1600000000,
+    "download_count": 100,
+    "files_hash": "abc",
+    "authors": { "Rob Tuytel": "All" },
+    "categories": ["brick", "man-made"],
+    "tags": ["wall", "red", "rough"],
+    "max_resolution": [8192, 8192]
+  },
+  "wood_floor_deck": {
+    "name": "Wood Floor Deck",
+    "type": 1,
+    "authors": { "Rico Cilliers": "All" },
+    "categories": ["wood", "floor"],
+    "tags": ["planks", "outdoor"]
+  },
+  "red_brick_03": {
+    "name": "Red Brick 03",
+    "type": 1,
+    "authors": { "Dimitrios Savva": "Textures", "Rob Tuytel": "Scan" },
+    "categories": ["brick"],
+    "tags": ["wall"]
+  }
+}

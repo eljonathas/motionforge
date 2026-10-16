@@ -1,0 +1,15 @@
+{
+  "gltf": {
+    "1k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_crate_02/wooden_crate_02_1k.gltf",
+        "size": 10,
+        "md5": "g",
+        "include": {
+          "wooden_crate_02.bin": { "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/wooden_crate_02/wooden_crate_02.bin", "size": 1, "md5": "b" },
+          "textures/wooden_crate_02_diff_1k.jpg": { "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_crate_02/wooden_crate_02_diff_1k.jpg", "size": 1, "md5": "d" }
+        }
+      }
+    }
+  }
+}

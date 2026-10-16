@@ -1,0 +1,18 @@
+{
+  "name": "reelcraft",
+  "displayName": "Reelcraft",
+  "version": "0.1.0",
+  "description": "Skills and tools for agents to make motion-graphics videos with real, licensed material instead of primitive shapes.",
+  "author": { "name": "eljonathas", "url": "https://github.com/eljonathas" },
+  "homepage": "https://github.com/eljonathas/reelcraft",
+  "repository": "https://github.com/eljonathas/reelcraft",
+  "license": "Apache-2.0",
+  "keywords": ["video", "motion-graphics", "hyperframes", "gsap", "assets"],
+  "skills": ["./skills/"],
+  "mcpServers": {
+    "reelcraft": {
+      "command": "npx",
+      "args": ["-y", "@eljonathas/reelcraft", "mcp"]
+    }
+  }
+}
