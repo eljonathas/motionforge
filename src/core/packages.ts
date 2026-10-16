@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ReelcraftError } from "./errors.js";
+import { MotionForgeError } from "./errors.js";
 
 /** Finds an installed dependency by walking up node_modules from this module (hoisting-safe). */
 export function findPackageDir(name: string): string {
@@ -14,13 +14,13 @@ export function findPackageDir(name: string): string {
     if (parent === dir) break;
     dir = parent;
   }
-  throw new ReelcraftError(
-    `Dependency "${name}" was not found next to reelcraft.`,
-    "Reinstall reelcraft (npm install) so its dependencies are present.",
+  throw new MotionForgeError(
+    `Dependency "${name}" was not found next to motionforge.`,
+    "Reinstall motionforge (npm install) so its dependencies are present.",
   );
 }
 
-/** Version of reelcraft itself, read from the package.json that sits above this module. */
+/** Version of motionforge itself, read from the package.json that sits above this module. */
 export async function ownVersion(): Promise<string> {
   let dir = path.dirname(fileURLToPath(import.meta.url));
   for (;;) {
@@ -30,7 +30,7 @@ export async function ownVersion(): Promise<string> {
         name?: string;
         version?: string;
       };
-      if (parsed.name === "reelcraft") return parsed.version ?? "0.0.0";
+      if (parsed.name === "@eljonathas/motionforge") return parsed.version ?? "0.0.0";
     }
     const parent = path.dirname(dir);
     if (parent === dir) return "0.0.0";

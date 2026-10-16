@@ -1,7 +1,7 @@
 ---
 name: critica
 description: >
-  Judge your own video before showing it: capture frames and contact sheets with HyperFrames, run `reelcraft
+  Judge your own video before showing it: capture frames and contact sheets with HyperFrames, run `motionforge
   check` (licenses, remote URLs, the "primitives aesthetic" detector) and `hyperframes check`, score each scene
   with a fixed rubric focused on real material, shots, text over image and coherence, fix the worst scene first,
   and record what the person approves or rejects in memory. Use after drafting scenes, before rendering the final
@@ -15,7 +15,7 @@ Você vê o vídeo pelos quadros, não pelo código. Julgue o que está na tela.
 ## 1. Gere a evidência
 
 ```bash
-npx @eljonathas/reelcraft check                                  # licenças, URLs remotas, estética de primitivas
+npx @eljonathas/motionforge check                                  # licenças, URLs remotas, estética de primitivas
 npx hyperframes check                                # layout, contraste, runtime
 npx hyperframes snapshot --frames 8                  # quadros espaçados do vídeo
 npx hyperframes snapshot --composition <cena> --frames 4   # uma cena
@@ -39,7 +39,7 @@ nenhuma cena tem 0 e a média é pelo menos 1,5.
 
 ## 3. O detector de estética de primitivas
 
-O `reelcraft check` marca cenas sem nenhum material real, cenas dominadas por círculos, elipses e retângulos
+O `motionforge check` marca cenas sem nenhum material real, cenas dominadas por círculos, elipses e retângulos
 decorativos, fundos chapados sem textura e animações todas com a mesma curva e duração. Quando ele marcar uma
 cena:
 
@@ -63,7 +63,7 @@ Uma rodada de crítica por vez; não reescreva o vídeo inteiro por causa de uma
 Mostre a folha de quadros antes do render final. Quando a pessoa aprovar, rejeitar ou corrigir algo, registre:
 
 ```bash
-npx @eljonathas/reelcraft memory add "título branco centralizado sobre foto de multidão" \
+npx @eljonathas/motionforge memory add "título branco centralizado sobre foto de multidão" \
   --kind rejected --scene-type abertura \
   --reason "o texto cobria os rostos; ela pediu o texto no céu"
 ```

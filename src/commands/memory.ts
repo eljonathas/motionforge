@@ -4,7 +4,7 @@ import type { Context } from "../context.js";
 import { searchLessons } from "../memory/search.js";
 import { addLesson, forgetLesson, loadLessons } from "../memory/store.js";
 import { LESSON_KINDS, type Lesson, type LessonKind, type LessonScope } from "../memory/types.js";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { print } from "./output.js";
 
 interface ScopeOptions {
@@ -30,7 +30,7 @@ function formatLesson(lesson: Lesson, score?: number): string {
 
 function parseKindOption(value: string): LessonKind {
   if ((LESSON_KINDS as readonly string[]).includes(value)) return value as LessonKind;
-  throw new ReelcraftError(
+  throw new MotionForgeError(
     `Unknown lesson kind "${value}".`,
     `Use one of: ${LESSON_KINDS.join(", ")}.`,
   );
@@ -69,7 +69,7 @@ function registerAdd(memory: Command, ctx: Context, location: Locate): void {
     .option("--reason <text>", "why")
     .option("--evidence <text>", "frame path or code snippet")
     .option("--source <text>", "who or what recorded it")
-    .option("--global", "save in ~/.reelcraft instead of the project")
+    .option("--global", "save in ~/.motionforge instead of the project")
     .option("--dir <dir>", "project directory", ".")
     .action(
       async (

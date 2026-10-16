@@ -7,7 +7,7 @@ import { ownVersion } from "./core/packages.js";
 import { serveStdio } from "./mcp/server.js";
 
 export async function buildProgram(ctx: Context): Promise<Command> {
-  const program = new Command("reelcraft")
+  const program = new Command("motionforge")
     .description("Tooling around HyperFrames for agent-made motion graphics")
     .version(await ownVersion())
     .showHelpAfterError();

@@ -1,6 +1,6 @@
 import { copyFile, mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { pathExists, writeJson, writeText } from "../core/fs-utils.js";
 import { runHyperframes, tailOutput } from "../core/hyperframes.js";
 import { findPackageDir } from "../core/packages.js";
@@ -26,7 +26,7 @@ async function assertTargetFree(target: string): Promise<void> {
   if (!(await pathExists(target))) return;
   const entries = await readdir(target);
   if (entries.length > 0) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `The folder ${target} already exists and is not empty.`,
       "Pick another project name or remove the folder.",
     );
@@ -49,7 +49,7 @@ async function initHyperframes(projectDir: string, resolution: Resolution): Prom
     parent,
   );
   if (result.code !== 0 || !(await pathExists(path.join(projectDir, "index.html")))) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `hyperframes init failed (exit ${result.code}).\n${tailOutput(result)}`,
       "Check that Node 22+ is installed and the folder is writable.",
     );
@@ -63,23 +63,23 @@ async function ensureGsapVendored(projectDir: string): Promise<void> {
   await copyFile(path.join(findPackageDir("gsap"), "dist", "gsap.min.js"), target);
 }
 
-async function writeReelcraftFiles(projectDir: string): Promise<string[]> {
+async function writeMotionForgeFiles(projectDir: string): Promise<string[]> {
   await writeJson(path.join(projectDir, "assets", "LICENCAS.json"), []);
-  await writeText(path.join(projectDir, ".reelcraft", "memoria", ".gitkeep"), "");
+  await writeText(path.join(projectDir, ".motionforge", "memoria", ".gitkeep"), "");
   const brief = path.join(projectDir, "brief.md");
   if (!(await pathExists(brief))) await writeText(brief, BRIEF_TEMPLATE);
-  return ["assets/LICENCAS.json", ".reelcraft/memoria/", "brief.md", "vendor/gsap.min.js"];
+  return ["assets/LICENCAS.json", ".motionforge/memoria/", "brief.md", "vendor/gsap.min.js"];
 }
 
-/** Scaffolds a HyperFrames project that renders offline and carries Reelcraft's bookkeeping files. */
+/** Scaffolds a HyperFrames project that renders offline and carries MotionForge's bookkeeping files. */
 export async function createProject(options: NewProjectOptions): Promise<NewProjectResult> {
-  if (options.name.trim() === "") throw new ReelcraftError("A project name is required.");
+  if (options.name.trim() === "") throw new MotionForgeError("A project name is required.");
   const resolution = parseResolution(options.resolution);
   const projectDir = path.resolve(options.cwd ?? process.cwd(), options.name);
   await assertTargetFree(projectDir);
   await initHyperframes(projectDir, resolution);
   await ensureGsapVendored(projectDir);
   const vendor = await vendorProject(projectDir);
-  const created = await writeReelcraftFiles(projectDir);
+  const created = await writeMotionForgeFiles(projectDir);
   return { projectDir, resolution, vendor, created };
 }

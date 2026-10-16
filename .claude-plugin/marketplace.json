@@ -1,10 +1,10 @@
 {
-  "name": "reelcraft",
-  "description": "Reelcraft: skills and tools for motion-graphics videos made by your coding agent.",
+  "name": "motionforge",
+  "description": "MotionForge: skills and tools for motion-graphics videos made by your coding agent.",
   "owner": { "name": "eljonathas", "url": "https://github.com/eljonathas" },
   "plugins": [
     {
-      "name": "reelcraft",
+      "name": "motionforge",
       "source": "./",
       "description": "Skills for art direction and craft, plus an MCP server to check scenes, fetch licensed assets, remember choices and render with HyperFrames.",
       "category": "video"

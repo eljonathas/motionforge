@@ -14,7 +14,7 @@ const http = new FixtureHttp({
 });
 const registry = new ProviderRegistry([new OpenverseProvider(http), new PexelsProvider(http, "k")]);
 
-describe("reelcraft assets", () => {
+describe("motionforge assets", () => {
   it("prints candidates with provider:id, licence and source", async () => {
     const run = await runCli(
       [

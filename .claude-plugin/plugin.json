@@ -1,18 +1,18 @@
 {
-  "name": "reelcraft",
-  "displayName": "Reelcraft",
+  "name": "motionforge",
+  "displayName": "MotionForge",
   "version": "0.1.0",
   "description": "Skills and tools for agents to make motion-graphics videos with real, licensed material instead of primitive shapes.",
   "author": { "name": "eljonathas", "url": "https://github.com/eljonathas" },
-  "homepage": "https://github.com/eljonathas/reelcraft",
-  "repository": "https://github.com/eljonathas/reelcraft",
+  "homepage": "https://github.com/eljonathas/motionforge",
+  "repository": "https://github.com/eljonathas/motionforge",
   "license": "Apache-2.0",
   "keywords": ["video", "motion-graphics", "hyperframes", "gsap", "assets"],
   "skills": ["./skills/"],
   "mcpServers": {
-    "reelcraft": {
+    "motionforge": {
       "command": "npx",
-      "args": ["-y", "@eljonathas/reelcraft", "mcp"]
+      "args": ["-y", "@eljonathas/motionforge", "mcp"]
     }
   }
 }

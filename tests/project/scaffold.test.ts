@@ -12,7 +12,7 @@ beforeAll(() => {
 });
 
 describe("createProject", () => {
-  it("scaffolds a HyperFrames project with GSAP vendored and Reelcraft bookkeeping", async () => {
+  it("scaffolds a HyperFrames project with GSAP vendored and MotionForge bookkeeping", async () => {
     const cwd = await makeTempDir();
 
     const result = await createProject({ name: "demo", cwd });
@@ -25,7 +25,7 @@ describe("createProject", () => {
       await readFile(path.join(findPackageDir("gsap"), "dist", "gsap.min.js"), "utf8"),
     );
     expect(JSON.parse(await read("assets/LICENCAS.json"))).toEqual([]);
-    expect(await read(".reelcraft/memoria/.gitkeep")).toBe("");
+    expect(await read(".motionforge/memoria/.gitkeep")).toBe("");
     expect(await read("brief.md")).toMatch(
       /## Pedido[\s\S]*## Público e plataforma[\s\S]*## Duração[\s\S]*## Tom[\s\S]*## Restrições/,
     );
@@ -51,7 +51,7 @@ describe("createProject", () => {
     );
   });
 
-  it("is available as `reelcraft new`", async () => {
+  it("is available as `motionforge new`", async () => {
     const cwd = await makeTempDir();
     const run = await runCli(["new", "viacli", "--resolution", "square"], { cwd });
     expect(run.stdout).toContain("(square)");

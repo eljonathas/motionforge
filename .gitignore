@@ -1,7 +1,7 @@
 node_modules/
 dist/
 *.mp4
-.reelcraft/
+.motionforge/
 .DS_Store
 coverage/
 renders/

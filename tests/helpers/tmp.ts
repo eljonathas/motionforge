@@ -10,7 +10,7 @@ afterEach(async () => {
 });
 
 export async function makeTempDir(): Promise<string> {
-  const dir = await mkdtemp(path.join(tmpdir(), "reelcraft-test-"));
+  const dir = await mkdtemp(path.join(tmpdir(), "motionforge-test-"));
   created.push(dir);
   return dir;
 }

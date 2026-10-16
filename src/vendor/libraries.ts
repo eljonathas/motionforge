@@ -110,7 +110,7 @@ export function planLibrary(ref: CdnRef): LibraryPlan {
   if (!spec) {
     return {
       kind: "unsupported",
-      reason: "not a library reelcraft bundles (gsap, lottie-web, three, animejs)",
+      reason: "not a library motionforge bundles (gsap, lottie-web, three, animejs)",
     };
   }
   if (ref.filePath.startsWith("examples/")) {

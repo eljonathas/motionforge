@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
-import { ReelcraftError } from "./errors.js";
+import { MotionForgeError } from "./errors.js";
 import { findPackageDir } from "./packages.js";
 
 export interface RunResult {
@@ -19,7 +19,7 @@ function hyperframesBin(): string {
 }
 
 /**
- * Runs the HyperFrames CLI bundled with reelcraft. Uses the current Node binary directly (no shell)
+ * Runs the HyperFrames CLI bundled with motionforge. Uses the current Node binary directly (no shell)
  * so quoting and path separators behave the same on macOS, Windows and Linux.
  */
 export function runHyperframes(
@@ -41,7 +41,7 @@ export function runHyperframes(
     child.stderr.on("data", (chunk: Buffer) => (stderr += chunk.toString("utf8")));
     child.on("error", (error) => {
       clearTimeout(timer);
-      reject(new ReelcraftError(`Could not start HyperFrames: ${error.message}`));
+      reject(new MotionForgeError(`Could not start HyperFrames: ${error.message}`));
     });
     child.on("close", (code) => {
       clearTimeout(timer);

@@ -66,7 +66,7 @@ function materialFindings(
           rule: "primitive-aesthetic",
           severity: "error",
           message: `Scene has ${prim} decorative shape(s) and no real material (image, video, licensed illustration, lottie, 3D or textured background).`,
-          fix: "Replace the shapes with a real photo, video or illustration (reelcraft assets search) and keep shapes only as accents.",
+          fix: "Replace the shapes with a real photo, video or illustration (motionforge assets search) and keep shapes only as accents.",
         }),
       );
     } else if (real === 0) {

@@ -43,7 +43,7 @@ async function call(client: Client, name: string, args: Record<string, unknown>)
   return { isError: result.isError === true, text: result.content[0]?.text ?? "" };
 }
 
-describe("reelcraft MCP server", () => {
+describe("motionforge MCP server", () => {
   it("exposes the nine tools with descriptions and JSON schemas", async () => {
     const client = await connect(await makeTempDir());
     const { tools } = await client.listTools();

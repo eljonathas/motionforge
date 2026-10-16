@@ -1,6 +1,6 @@
 import path from "node:path";
 import { z } from "zod";
-import { ReelcraftError } from "../../core/errors.js";
+import { MotionForgeError } from "../../core/errors.js";
 import type {
   AssetCandidate,
   AssetKind,
@@ -92,7 +92,7 @@ export class OpenverseProvider implements AssetProvider {
   async search(query: SearchQuery): Promise<AssetCandidate[]> {
     const mapping = KIND_MAP[query.kind];
     if (!mapping) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `Openverse does not provide "${query.kind}" assets.`,
         `Use one of: ${this.kinds.join(", ")}.`,
       );
@@ -110,7 +110,7 @@ export class OpenverseProvider implements AssetProvider {
   async resolve(id: string): Promise<ResolvedAsset> {
     const found = await this.findById(id);
     const { item, kind } = found;
-    if (!item.url) throw new ReelcraftError(`Openverse item ${id} has no downloadable file.`);
+    if (!item.url) throw new MotionForgeError(`Openverse item ${id} has no downloadable file.`);
     return {
       candidate: toCandidate(item, kind),
       files: [{ url: item.url, name: `openverse-${item.id}.${extensionOf(item)}` }],
@@ -125,15 +125,15 @@ export class OpenverseProvider implements AssetProvider {
         kind: "photo",
       };
     } catch (error) {
-      if (!(error instanceof ReelcraftError) || !error.message.includes("HTTP 404")) throw error;
+      if (!(error instanceof MotionForgeError) || !error.message.includes("HTTP 404")) throw error;
     }
     try {
       return { item: Item.parse(await this.http.getJson(`${BASE}/audio/${safeId}/`)), kind: "sfx" };
     } catch (error) {
-      if (error instanceof ReelcraftError && error.message.includes("HTTP 404")) {
-        throw new ReelcraftError(
+      if (error instanceof MotionForgeError && error.message.includes("HTTP 404")) {
+        throw new MotionForgeError(
           `Openverse has no image or audio with id ${id}.`,
-          "Use an id from `reelcraft assets search`.",
+          "Use an id from `motionforge assets search`.",
         );
       }
       throw error;

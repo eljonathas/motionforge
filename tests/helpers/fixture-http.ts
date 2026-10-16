@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ReelcraftError } from "../../src/core/errors.js";
+import { MotionForgeError } from "../../src/core/errors.js";
 import type { FileDownloader, HttpClient } from "../../src/assets/types.js";
 
 const FIXTURES = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "fixtures");
@@ -28,7 +28,7 @@ export class FixtureHttp implements HttpClient {
     this.requests.push({ url, headers });
     const file = this.routes[url];
     if (file === undefined) {
-      return Promise.reject(new ReelcraftError(`api.test answered HTTP 404 for ${url}.`));
+      return Promise.reject(new MotionForgeError(`api.test answered HTTP 404 for ${url}.`));
     }
     return Promise.resolve(fixture(file));
   }
