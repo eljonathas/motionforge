@@ -13,9 +13,7 @@
   },
   "files": [
     "dist",
-    "templates",
-    ".claude-plugin",
-    "skills"
+    ".claude-plugin"
   ],
   "engines": {
     "node": ">=22"
@@ -26,7 +24,7 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:integration": "REELCRAFT_INTEGRATION=1 vitest run tests/integration"
+    "test:integration": "vitest run tests/integration"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.1",

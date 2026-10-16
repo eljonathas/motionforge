@@ -46,13 +46,14 @@ function referenceFinding(use: LocalUse, rule: string, message: string, fix: str
   };
 }
 
-/** Licence coverage for local assets plus NC/ND flags. Pure: all file-system facts come in `input`. */
-export function checkLicenses(input: LicenseCheckInput): Finding[] {
-  const findings: Finding[] = [];
-  const licensed = new Map(input.ledger.map((e) => [normalizeLedgerFile(e.file), e]));
-  const uses = localUses(input);
-  const referenced = new Set(uses.map((u) => u.target));
+type Licensed = ReadonlyMap<string, LedgerEntry>;
 
+function referenceFindings(
+  input: LicenseCheckInput,
+  uses: readonly LocalUse[],
+  licensed: Licensed,
+): Finding[] {
+  const findings: Finding[] = [];
   for (const use of uses) {
     if (!input.fileExists(use.target)) {
       findings.push(
@@ -74,19 +75,32 @@ export function checkLicenses(input: LicenseCheckInput): Finding[] {
       );
     }
   }
+  return findings;
+}
 
-  for (const file of input.assetFiles) {
-    if (licensed.has(file) || referenced.has(file)) continue;
-    findings.push({
+function orphanAssetFindings(
+  assetFiles: readonly string[],
+  licensed: Licensed,
+  referenced: ReadonlySet<string>,
+): Finding[] {
+  return assetFiles
+    .filter((file) => !licensed.has(file) && !referenced.has(file))
+    .map((file) => ({
       rule: "license-missing",
-      severity: "error",
+      severity: "error" as const,
       file,
       selector: "",
       message: `${file} has no entry in ${LEDGER_FILE}.`,
       fix: "Add an entry with origin, author and licence, or delete the file.",
-    });
-  }
+    }));
+}
 
+function ledgerFindings(
+  input: LicenseCheckInput,
+  licensed: Licensed,
+  referenced: ReadonlySet<string>,
+): Finding[] {
+  const findings: Finding[] = [];
   for (const [file, entry] of licensed) {
     if (!input.fileExists(file)) {
       findings.push({
@@ -110,4 +124,16 @@ export function checkLicenses(input: LicenseCheckInput): Finding[] {
     }
   }
   return findings;
+}
+
+/** Licence coverage for local assets plus NC/ND flags. Pure: all file-system facts come in `input`. */
+export function checkLicenses(input: LicenseCheckInput): Finding[] {
+  const licensed: Licensed = new Map(input.ledger.map((e) => [normalizeLedgerFile(e.file), e]));
+  const uses = localUses(input);
+  const referenced = new Set(uses.map((u) => u.target));
+  return [
+    ...referenceFindings(input, uses, licensed),
+    ...orphanAssetFindings(input.assetFiles, licensed, referenced),
+    ...ledgerFindings(input, licensed, referenced),
+  ];
 }

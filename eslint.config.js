@@ -16,5 +16,6 @@ export default tseslint.config(
       "@typescript-eslint/no-floating-promises": "error",
     },
   },
+  { files: ["tests/**/*.ts"], rules: { "max-lines-per-function": "off" } },
   { files: ["*.js", "*.config.ts"], ...tseslint.configs.disableTypeChecked },
 );
