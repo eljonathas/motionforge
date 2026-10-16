@@ -35,6 +35,16 @@ Opções levantadas em [REFERENCIAS.md](../REFERENCIAS.md):
   O Reelcraft não é um construtor visual; a análise fica registrada aqui e deve ser revista se surgir um editor
   visual de animação.
 
+- Achados ao testar o HyperFrames 0.8.164 (16/10/2026):
+  - o projeto criado pelo `init` carrega o GSAP de uma CDN; sem rede o render falha. O `reelcraft new` copia as
+    bibliotecas para `vendor/`, o que também deixa o render reprodutível;
+  - a telemetria anônima vem ligada; o Reelcraft define `HYPERFRAMES_NO_TELEMETRY=1` nos comandos que chama e
+    documenta a opção para quem usa o HyperFrames direto;
+  - o `init` baixa as skills do HyperFrames do GitHub; o render pode usar um Chromium existente via
+    `HYPERFRAMES_BROWSER_PATH`;
+  - o `media-use` do HyperFrames depende do catálogo e do CLI da HeyGen para música, imagens e voz; o Reelcraft
+    oferece o caminho aberto e licenciado em paralelo.
+
 ## Alternativas rejeitadas
 
 - **Runtime próprio**: mantém o problema da estética de primitivas e o custo de manter render.
