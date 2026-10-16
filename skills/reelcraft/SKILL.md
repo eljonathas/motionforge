@@ -40,7 +40,7 @@ Isso cria o projeto do HyperFrames com as bibliotecas em `vendor/` (render offli
 ## 3. Consulte a memória
 
 ```bash
-npx reelcraft memory search "<tipo de cena ou estilo>"
+npx reelcraft memory search "<assunto ou estilo>" --scene-type <tipo de cena>
 ```
 
 Lições aprovadas pesam mais que suas preferências gerais; lições rejeitadas são coisas a **não** repetir.
@@ -72,5 +72,5 @@ npx hyperframes check        # layout, contraste, runtime
 Depois siga a `critica`. Ao final, registre o que a pessoa aprovou, rejeitou ou corrigiu:
 
 ```bash
-npx reelcraft memory add --kind approved|rejected|edited --scene-type <tipo> --decision "..." --reason "..."
+npx reelcraft memory add "<a decisão>" --kind approved|rejected|edited --scene-type <tipo> --reason "<o porquê>"
 ```

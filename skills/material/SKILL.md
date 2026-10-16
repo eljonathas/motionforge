@@ -32,7 +32,9 @@ lateral quente"). Buscas em inglês costumam trazer mais resultados nas fontes a
 | Poly Haven | texturas, HDRIs e modelos 3D, todos CC0 | não |
 | Pexels | fotos e vídeos de alta qualidade | `PEXELS_API_KEY` grátis |
 
-Sem a chave do Pexels, a busca usa as fontes sem chave.
+Sem a chave do Pexels, a busca usa as fontes sem chave. Para restringir a uma fonte: `--provider pexels`.
+O Openverse só devolve licenças que permitem uso comercial e modificação; `--any-license` existe, mas não use
+em vídeos que possam ser publicados.
 
 ## 2. Escolher
 
@@ -51,7 +53,7 @@ Olhe as miniaturas antes de baixar. Para cada candidato, confira:
 ## 3. Baixar e registrar
 
 ```bash
-npx reelcraft assets get pexels:12345 --dir assets
+npx reelcraft assets get pexels:12345        # no diretório do projeto (ou --dir <projeto>)
 ```
 
 O `get` baixa para `assets/<tipo>/` e grava em `assets/LICENCAS.json`: arquivo, fonte, id, título, autor, link,

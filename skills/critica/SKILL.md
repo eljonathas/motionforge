@@ -63,9 +63,10 @@ Uma rodada de crítica por vez; não reescreva o vídeo inteiro por causa de uma
 Mostre a folha de quadros antes do render final. Quando a pessoa aprovar, rejeitar ou corrigir algo, registre:
 
 ```bash
-npx reelcraft memory add --kind rejected --scene-type abertura \
-  --decision "título branco centralizado sobre foto de multidão" \
+npx reelcraft memory add "título branco centralizado sobre foto de multidão" \
+  --kind rejected --scene-type abertura \
   --reason "o texto cobria os rostos; ela pediu o texto no céu"
 ```
 
-Registre o **porquê**, não só o quê. Lições com motivo são as que ajudam no próximo vídeo.
+Registre o **porquê**, não só o quê. Lições com motivo são as que ajudam no próximo vídeo. Use `--global`
+para uma preferência da pessoa que vale em todos os projetos.
