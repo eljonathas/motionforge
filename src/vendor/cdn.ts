@@ -65,6 +65,7 @@ export function parseCdnUrl(rawUrl: string): CdnRef | undefined {
   }
   if (url.hostname === "unpkg.com")
     return { ...base, host: "unpkg", ...splitPackageSpec(pathname) };
+  if (url.hostname !== "cdnjs.cloudflare.com") return undefined;
   const [, , name = "", version, ...rest] = pathname.split("/");
   return {
     ...base,

@@ -47,3 +47,9 @@ describe("parseCdnUrl", () => {
     expect(parseCdnUrl("https://cdn.jsdelivr.net/gh/user/repo@1/file.js")?.pkg).toBeUndefined();
   });
 });
+
+describe("parseCdnUrl on other hosts", () => {
+  it("returns nothing for URLs that are not on a known CDN", () => {
+    expect(parseCdnUrl("https://images.example.com/a.jpg")).toBeUndefined();
+  });
+});
