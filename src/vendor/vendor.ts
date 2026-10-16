@@ -1,6 +1,6 @@
 import { copyFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { isDirectory, listHtmlFiles, readText, toPosix, writeText } from "../core/fs-utils.js";
 import type { CdnRef } from "./cdn.js";
 import { planLibrary, type PlannedCopy } from "./libraries.js";
@@ -48,7 +48,7 @@ function makeResolver(
 export async function vendorProject(dir: string): Promise<VendorReport> {
   const root = path.resolve(dir);
   if (!(await isDirectory(root))) {
-    throw new ReelcraftError(`Project directory not found: ${root}`);
+    throw new MotionForgeError(`Project directory not found: ${root}`);
   }
   const copies = new Map<string, PlannedCopy>();
   const files: VendorFileReport[] = [];

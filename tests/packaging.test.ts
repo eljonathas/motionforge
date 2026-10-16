@@ -27,16 +27,16 @@ describe("Claude Code plugin packaging", () => {
   });
 
   it("declares the skills folder and starts the MCP server from the scoped package", () => {
-    // The bare npm name "reelcraft" belongs to another project; npx must never resolve to it.
+    // The bare npm name "motionforge" belongs to another project; npx must never resolve to it.
     expect(plugin.skills).toEqual(["./skills/"]);
-    expect(plugin.mcpServers["reelcraft"]).toEqual({
+    expect(plugin.mcpServers["motionforge"]).toEqual({
       command: "npx",
       args: ["-y", pkg.name, "mcp"],
     });
-    expect(pkg.bin["reelcraft"]).toBe("dist/cli.js");
+    expect(pkg.bin["motionforge"]).toBe("dist/cli.js");
   });
 
-  it("lists the plugin at the repository root so `marketplace add eljonathas/reelcraft` works", () => {
+  it("lists the plugin at the repository root so `marketplace add eljonathas/motionforge` works", () => {
     expect(marketplace.plugins).toEqual([
       expect.objectContaining({ name: plugin.name, source: "./" }),
     ]);

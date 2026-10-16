@@ -61,7 +61,7 @@ function referenceFindings(
           use,
           "missing-file",
           `${use.target} is referenced but does not exist.`,
-          "Fix the path or download the file with `reelcraft assets get`.",
+          "Fix the path or download the file with `motionforge assets get`.",
         ),
       );
     } else if (LICENSED_KINDS.has(use.ref.kind) && !licensed.has(use.target)) {
@@ -70,7 +70,7 @@ function referenceFindings(
           use,
           "license-missing",
           `${use.target} has no entry in ${LEDGER_FILE}.`,
-          "Re-download it with `reelcraft assets get <provider>:<id>` or add an entry with origin, author and licence.",
+          "Re-download it with `motionforge assets get <provider>:<id>` or add an entry with origin, author and licence.",
         ),
       );
     }

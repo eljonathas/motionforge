@@ -10,7 +10,7 @@ async function env() {
   return { cwd, homeDir, now };
 }
 
-describe("reelcraft memory", () => {
+describe("motionforge memory", () => {
   it("adds, searches, lists and forgets lessons across project and global scope", async () => {
     const ctx = await env();
 
@@ -68,10 +68,10 @@ describe("reelcraft memory", () => {
     await runCli(["memory", "add", "g", "--kind", "note", "--global"], ctx);
     const { readFile } = await import("node:fs/promises");
     expect(
-      await readFile(path.join(ctx.homeDir, ".reelcraft", "memoria", "licoes.jsonl"), "utf8"),
+      await readFile(path.join(ctx.homeDir, ".motionforge", "memoria", "licoes.jsonl"), "utf8"),
     ).toContain('"scope":"global"');
     await expect(
-      readFile(path.join(ctx.cwd, ".reelcraft", "memoria", "licoes.jsonl"), "utf8"),
+      readFile(path.join(ctx.cwd, ".motionforge", "memoria", "licoes.jsonl"), "utf8"),
     ).rejects.toThrow();
   });
 });

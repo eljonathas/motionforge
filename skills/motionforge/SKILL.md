@@ -1,17 +1,17 @@
 ---
-name: reelcraft
+name: motionforge
 description: >
   Use together with /hyperframes whenever a video, animation or motion graphic is about the real world (people,
   places, objects, nature, food, history, science, news, education, stories, products shown as physical things)
   or the person asks for realism, photos, footage, illustration or characters, or complains that the result looks
-  generic, abstract, geometric, "like a template" or "made of circles". Decides which Reelcraft skills apply
+  generic, abstract, geometric, "like a template" or "made of circles". Decides which MotionForge skills apply
   (realismo, material, critica) and which HyperFrames skills own the technique, and sets up the project with
-  `reelcraft new` so assets carry licenses and renders work offline.
+  `motionforge new` so assets carry licenses and renders work offline.
 ---
 
-# Reelcraft — roteador
+# MotionForge — roteador
 
-O Reelcraft complementa o HyperFrames. O HyperFrames ensina o motor, a animação e o design gráfico; o Reelcraft
+O MotionForge complementa o HyperFrames. O HyperFrames ensina o motor, a animação e o design gráfico; o MotionForge
 cuida de **material real com licença, realismo, ilustração, personagens, narrativa, crítica e memória**.
 
 ## 1. Classifique o pedido antes de escrever qualquer HTML
@@ -30,17 +30,17 @@ como se fosse um slide de tecnologia.
 ## 2. Monte o projeto
 
 ```bash
-npx @eljonathas/reelcraft new <nome> --resolution landscape   # ou portrait / square
+npx @eljonathas/motionforge new <nome> --resolution landscape   # ou portrait / square
 ```
 
 Isso cria o projeto do HyperFrames com as bibliotecas em `vendor/` (render offline), `assets/LICENCAS.json`,
 `brief.md` e a pasta de memória, com a telemetria do HyperFrames desligada. Se o projeto já existe, rode
-`npx @eljonathas/reelcraft vendor` uma vez para trocar CDNs por cópias locais.
+`npx @eljonathas/motionforge vendor` uma vez para trocar CDNs por cópias locais.
 
 ## 3. Consulte a memória
 
 ```bash
-npx @eljonathas/reelcraft memory search "<assunto ou estilo>" --scene-type <tipo de cena>
+npx @eljonathas/motionforge memory search "<assunto ou estilo>" --scene-type <tipo de cena>
 ```
 
 Lições aprovadas pesam mais que suas preferências gerais; lições rejeitadas são coisas a **não** repetir.
@@ -65,12 +65,12 @@ HyperFrames.
 ## 5. Antes de renderizar
 
 ```bash
-npx @eljonathas/reelcraft check          # licenças, URLs remotas, estética de primitivas
+npx @eljonathas/motionforge check          # licenças, URLs remotas, estética de primitivas
 npx hyperframes check        # layout, contraste, runtime
 ```
 
 Depois siga a `critica`. Ao final, registre o que a pessoa aprovou, rejeitou ou corrigiu:
 
 ```bash
-npx @eljonathas/reelcraft memory add "<a decisão>" --kind approved|rejected|edited --scene-type <tipo> --reason "<o porquê>"
+npx @eljonathas/motionforge memory add "<a decisão>" --kind approved|rejected|edited --scene-type <tipo> --reason "<o porquê>"
 ```

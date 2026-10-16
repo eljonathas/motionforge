@@ -17,7 +17,7 @@ export function registerProjectCommands(program: Command, ctx: Context): void {
       print(`Created ${result.projectDir} (${result.resolution}).`);
       print(`Vendored locally: ${result.vendor.copied.join(", ") || "nothing"}.`);
       print(
-        `Next: cd ${name}, write brief.md, then \`reelcraft check\` and \`npx hyperframes preview\`.`,
+        `Next: cd ${name}, write brief.md, then \`motionforge check\` and \`npx hyperframes preview\`.`,
       );
     });
 

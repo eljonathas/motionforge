@@ -24,7 +24,7 @@ export async function runCli(args: string[], overrides: Partial<Context> = {}): 
   try {
     const program = await buildProgram(createContext(overrides));
     program.exitOverride();
-    await program.parseAsync(["node", "reelcraft", ...args]);
+    await program.parseAsync(["node", "motionforge", ...args]);
     return { stdout, stderr, exitCode: process.exitCode };
   } finally {
     out.mockRestore();

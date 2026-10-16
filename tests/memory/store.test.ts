@@ -17,7 +17,7 @@ async function locations() {
 }
 
 describe("memory store", () => {
-  it("writes project lessons to .reelcraft/memoria/licoes.jsonl, one JSON object per line", async () => {
+  it("writes project lessons to .motionforge/memoria/licoes.jsonl, one JSON object per line", async () => {
     const loc = await locations();
 
     const lesson = await addLesson(
@@ -33,7 +33,7 @@ describe("memory store", () => {
       { ...loc, scope: "project", now: now("2026-10-16T10:00:00.000Z") },
     );
 
-    const file = path.join(loc.projectDir, ".reelcraft", "memoria", "licoes.jsonl");
+    const file = path.join(loc.projectDir, ".motionforge", "memoria", "licoes.jsonl");
     expect(memoryFile("project", loc)).toBe(file);
     const lines = (await readFile(file, "utf8")).trimEnd().split("\n");
     expect(lines).toHaveLength(1);
@@ -64,7 +64,7 @@ describe("memory store", () => {
     );
 
     expect(memoryFile("global", loc)).toBe(
-      path.join(loc.homeDir, ".reelcraft", "memoria", "licoes.jsonl"),
+      path.join(loc.homeDir, ".motionforge", "memoria", "licoes.jsonl"),
     );
     const all = await loadLessons(["project", "global"], loc);
     expect(all.map((l) => [l.scope, l.decision])).toEqual([

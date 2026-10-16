@@ -19,7 +19,7 @@ describe("checkNetwork", () => {
 
     expect(findings.map((f) => f.rule)).toEqual(Array(5).fill("remote-url"));
     expect(findings.every((f) => f.severity === "error")).toBe(true);
-    expect(findings[0]?.fix).toMatch(/reelcraft vendor/);
+    expect(findings[0]?.fix).toMatch(/motionforge vendor/);
   });
 
   it("suggests downloading when the URL is not a known CDN", () => {

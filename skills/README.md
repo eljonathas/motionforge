@@ -1,11 +1,11 @@
 # Skills
 
-Catálogo planejado (detalhes em `docs/PLANO.md`, seção 5.2). As skills do Reelcraft complementam as do
+Catálogo planejado (detalhes em `docs/PLANO.md`, seção 5.2). As skills do MotionForge complementam as do
 HyperFrames e delegam a elas a técnica do motor, da animação e da direção gráfica.
 
 | Skill | Fase |
 |---|---|
-| `reelcraft` (roteador) | M1 |
+| `motionforge` (roteador) | M1 |
 | `realismo` | M1 |
 | `material` | M1 |
 | `critica` | M1 |

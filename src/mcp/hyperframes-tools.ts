@@ -1,7 +1,7 @@
 import { mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
 import { checkProject } from "../check/run.js";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { isDirectory, toPosix } from "../core/fs-utils.js";
 import { runHyperframes, tailOutput } from "../core/hyperframes.js";
 
@@ -16,7 +16,8 @@ const BLOCKING_RULES = new Set([
 
 async function requireProject(dir: string): Promise<string> {
   const root = path.resolve(dir);
-  if (!(await isDirectory(root))) throw new ReelcraftError(`Project directory not found: ${root}`);
+  if (!(await isDirectory(root)))
+    throw new MotionForgeError(`Project directory not found: ${root}`);
   return root;
 }
 
@@ -39,9 +40,9 @@ export async function snapshotProject(
   else if (options.frames !== undefined) args.push("--frames", String(options.frames));
   const result = await runHyperframes(args, root);
   if (result.code !== 0) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `hyperframes snapshot failed (exit ${result.code}).\n${tailOutput(result)}`,
-      "Run `reelcraft check` and fix the composition, then try again.",
+      "Run `motionforge check` and fix the composition, then try again.",
     );
   }
   const images = (await readdir(outDir))
@@ -71,7 +72,7 @@ async function assertRenderable(root: string): Promise<void> {
     .map((f) => `- ${f.file}: ${f.message}`)
     .join("\n");
   const more = blocking.length > 5 ? `\n...and ${blocking.length - 5} more.` : "";
-  throw new ReelcraftError(
+  throw new MotionForgeError(
     `Refusing to render: ${blocking.length} licence or offline problem(s).\n${list}${more}`,
     "Fix them (see `check`), or pass force: true if you accept the risk.",
   );
@@ -88,7 +89,7 @@ export async function renderProject(
   if (options.fps !== undefined) args.push("--fps", String(options.fps));
   const result = await runHyperframes(args, root);
   if (result.code !== 0) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `hyperframes render failed (exit ${result.code}).\n${tailOutput(result)}`,
       "Run `check` and `snapshot` to find the broken scene.",
     );

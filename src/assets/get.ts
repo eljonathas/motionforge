@@ -1,5 +1,5 @@
 import path from "node:path";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { toPosix } from "../core/fs-utils.js";
 import { recordLicense, type LedgerEntry } from "./ledger.js";
 import type { ProviderRegistry } from "./registry.js";
@@ -19,7 +19,7 @@ export interface GetAssetResult {
 export function parseAssetRef(ref: string): { provider: string; id: string } {
   const colon = ref.indexOf(":");
   if (colon <= 0 || colon === ref.length - 1) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `"${ref}" is not a valid asset reference.`,
       "Use <provider>:<id>, for example pexels:1234567.",
     );
@@ -31,7 +31,7 @@ export function parseAssetRef(ref: string): { provider: string; id: string } {
 function safeRelative(name: string): string {
   const normalized = path.posix.normalize(name.replaceAll("\\", "/"));
   if (normalized.startsWith("..") || normalized.startsWith("/") || /^[a-z]:/i.test(normalized)) {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `Refusing to write outside assets/: "${name}".`,
       "The provider returned an unexpected file path.",
     );

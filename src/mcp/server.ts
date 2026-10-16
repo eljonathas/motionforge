@@ -28,7 +28,7 @@ export async function callTool(
 }
 
 export async function buildServer(ctx: Context): Promise<McpServer> {
-  const server = new McpServer({ name: "reelcraft", version: await ownVersion() });
+  const server = new McpServer({ name: "motionforge", version: await ownVersion() });
   for (const tool of TOOLS) {
     server.registerTool(
       tool.name,

@@ -1,15 +1,15 @@
 {
-  "name": "@eljonathas/reelcraft",
+  "name": "@eljonathas/motionforge",
   "version": "0.1.0",
   "description": "Tooling around HyperFrames for agent-made motion graphics: scaffolding, offline vendoring, static checks, licensed assets, memory and an MCP server.",
   "type": "module",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eljonathas/reelcraft.git"
+    "url": "git+https://github.com/eljonathas/motionforge.git"
   },
   "bin": {
-    "reelcraft": "dist/cli.js"
+    "motionforge": "dist/cli.js"
   },
   "files": [
     "dist",

@@ -9,8 +9,8 @@ const HARMLESS_NAMESPACES = /^https?:\/\/(?:www\.)?w3\.org\//i;
 
 function fixFor(url: string): string {
   return parseCdnUrl(url)
-    ? "Run `reelcraft vendor` to copy it locally, or download it into the project and reference the local file."
-    : "Download the file with `reelcraft assets get` (or into assets/) and reference the local copy.";
+    ? "Run `motionforge vendor` to copy it locally, or download it into the project and reference the local file."
+    : "Download the file with `motionforge assets get` (or into assets/) and reference the local copy.";
 }
 
 function finding(

@@ -6,7 +6,7 @@ import {
   readLedger,
   type LedgerEntry,
 } from "../assets/ledger.js";
-import { ReelcraftError, describeError } from "../core/errors.js";
+import { MotionForgeError, describeError } from "../core/errors.js";
 import { isDirectory, listHtmlFiles, readText, toPosix, walkFiles } from "../core/fs-utils.js";
 import { loadHtml } from "./document.js";
 import { checkLicenses } from "./licenses.js";
@@ -67,7 +67,8 @@ function sortFindings(findings: Finding[]): Finding[] {
 /** Runs the static checks (licences, network, primitive aesthetic) over every .html in the project. */
 export async function checkProject(dir: string, options: CheckOptions = {}): Promise<CheckReport> {
   const root = path.resolve(dir);
-  if (!(await isDirectory(root))) throw new ReelcraftError(`Project directory not found: ${root}`);
+  if (!(await isDirectory(root)))
+    throw new MotionForgeError(`Project directory not found: ${root}`);
 
   const { ledger, problem } = await readLedgerSafely(root);
   const licensed = new Set(ledger.map((e) => normalizeLedgerFile(e.file)));

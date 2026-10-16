@@ -1,4 +1,4 @@
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { OpenverseProvider } from "./providers/openverse.js";
 import { PexelsProvider } from "./providers/pexels.js";
 import { PolyHavenProvider } from "./providers/polyhaven.js";
@@ -25,7 +25,7 @@ export class ProviderRegistry {
   get(name: string): AssetProvider {
     const provider = this.byName.get(name);
     if (!provider) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `Unknown asset provider "${name}".`,
         `Available providers: ${this.names().join(", ")}.`,
       );
@@ -38,7 +38,7 @@ export class ProviderRegistry {
     if (only) {
       const provider = this.get(only);
       if (!provider.kinds.includes(kind)) {
-        throw new ReelcraftError(
+        throw new MotionForgeError(
           `${only} does not provide "${kind}" assets.`,
           `${only} provides: ${provider.kinds.join(", ")}.`,
         );
@@ -47,7 +47,7 @@ export class ProviderRegistry {
     }
     const providers = [...this.byName.values()].filter((p) => p.kinds.includes(kind));
     if (providers.length === 0) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `No provider is available for "${kind}" assets yet.`,
         "Try photo, video, texture, hdri, model, illustration or sfx.",
       );
@@ -70,7 +70,7 @@ export function createDefaultRegistry(
 
 export function parseKind(value: string): AssetKind {
   if ((ASSET_KINDS as readonly string[]).includes(value)) return value as AssetKind;
-  throw new ReelcraftError(
+  throw new MotionForgeError(
     `Unknown asset kind "${value}".`,
     `Use one of: ${ASSET_KINDS.join(", ")}.`,
   );

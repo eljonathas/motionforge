@@ -1,9 +1,9 @@
-# AGENTS.md — Reelcraft
+# AGENTS.md — MotionForge
 
 Regras para quem altera este repositório (pessoas ou agentes). O que o produto faz está em `docs/PLANO.md`.
 
 1. **Idioma:** documentação, skills e receitas em português; código, identificadores e mensagens de commit em inglês.
-2. **Sem modelo embutido:** nenhum código do Reelcraft chama API de modelo. O raciocínio é do agente de quem usa.
+2. **Sem modelo embutido:** nenhum código do MotionForge chama API de modelo. O raciocínio é do agente de quem usa.
 3. **Licença sempre registrada:** nenhum asset entra no repositório ou num projeto sem origem, autor, licença e
    atribuição gravados. Nada com licença NC ou ND nas receitas.
 4. **Nada copiado:** skills e receitas descrevem técnicas com palavras próprias e citam a fonte por link.

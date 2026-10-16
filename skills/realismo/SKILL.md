@@ -88,6 +88,6 @@ valendo.
 - [ ] O plano tem um movimento motivado (ou é vídeo real que já se move).
 - [ ] O texto está no espaço negativo e passa no contraste.
 - [ ] A cena combina em cor, luz e grão com a anterior e a seguinte.
-- [ ] `npx @eljonathas/reelcraft check` não aponta estética de primitivas nesta cena.
+- [ ] `npx @eljonathas/motionforge check` não aponta estética de primitivas nesta cena.
 
 Depois, siga a `critica`.

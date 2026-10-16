@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReelcraftError } from "../../core/errors.js";
+import { MotionForgeError } from "../../core/errors.js";
 import type {
   AssetCandidate,
   AssetKind,
@@ -106,7 +106,7 @@ export class PolyHavenProvider implements AssetProvider {
 
   async search(query: SearchQuery): Promise<AssetCandidate[]> {
     if (!(query.kind in API_TYPE)) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `Poly Haven does not provide "${query.kind}" assets.`,
         `Use one of: ${this.kinds.join(", ")}.`,
       );
@@ -126,13 +126,13 @@ export class PolyHavenProvider implements AssetProvider {
     const safeId = encodeURIComponent(id);
     const info = Info.parse(await this.http.getJson(`${BASE}/info/${safeId}`));
     const kind = KIND_BY_TYPE[info.type ?? -1];
-    if (!kind) throw new ReelcraftError(`Poly Haven asset ${id} has an unsupported type.`);
+    if (!kind) throw new MotionForgeError(`Poly Haven asset ${id} has an unsupported type.`);
     const files = Files.parse(await this.http.getJson(`${BASE}/files/${safeId}`));
     const downloads = downloadsFor(kind, id, files);
     if (downloads.length === 0) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `Poly Haven asset ${id} has no downloadable ${kind} file.`,
-        "Try another asset from `reelcraft assets search`.",
+        "Try another asset from `motionforge assets search`.",
       );
     }
     return { candidate: toCandidate(id, info, kind), files: downloads };

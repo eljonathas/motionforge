@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ReelcraftError } from "../../core/errors.js";
+import { MotionForgeError } from "../../core/errors.js";
 import type {
   AssetCandidate,
   AssetKind,
@@ -135,7 +135,7 @@ export class PexelsProvider implements AssetProvider {
         .parse(raw)
         .videos.map(videoCandidate);
     }
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       `Pexels does not provide "${query.kind}" assets.`,
       `Use one of: ${this.kinds.join(", ")}.`,
     );
@@ -159,7 +159,7 @@ export class PexelsProvider implements AssetProvider {
 
   private videoAsset(video: Video): ResolvedAsset {
     const file = pickVideoFile(video.video_files);
-    if (!file) throw new ReelcraftError(`Pexels video ${video.id} has no mp4 file.`);
+    if (!file) throw new MotionForgeError(`Pexels video ${video.id} has no mp4 file.`);
     return {
       candidate: videoCandidate(video),
       files: [{ url: file.link, name: `pexels-video-${video.id}.mp4` }],
@@ -168,7 +168,7 @@ export class PexelsProvider implements AssetProvider {
 
   private authHeaders(): Record<string, string> {
     if (!this.apiKey) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         "Pexels needs an API key.",
         "Create a free key at https://www.pexels.com/api/ and set PEXELS_API_KEY.",
       );

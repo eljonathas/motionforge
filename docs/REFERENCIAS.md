@@ -21,7 +21,7 @@ Fontes: [anúncio do Webflow](https://webflow.com/blog/gsap-becomes-free), [text
 ## 2. Fontes de assets reais
 
 O objetivo é que cada cena carregue material de verdade. Toda busca e todo download passam pelas ferramentas do
-Reelcraft, que gravam origem, autor, licença e atribuição em `assets/LICENCAS.json`.
+MotionForge, que gravam origem, autor, licença e atribuição em `assets/LICENCAS.json`.
 
 | Tipo | Fonte | Licença | Observações |
 |---|---|---|---|

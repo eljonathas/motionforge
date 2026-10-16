@@ -3,7 +3,7 @@ name: material
 description: >
   Find, choose and download real, openly licensed material for a video — photos, footage, textures, HDRIs, 3D
   models, illustrations, icons and sound effects — from open sources (Openverse, Poly Haven, Pexels and others)
-  with `reelcraft assets`, recording origin, author, license and attribution next to every file. Use whenever a
+  with `motionforge assets`, recording origin, author, license and attribution next to every file. Use whenever a
   scene needs a real image, video, texture or sound, before drawing any shape, and when the person provides their
   own files or generated images that must be registered.
 ---
@@ -11,14 +11,14 @@ description: >
 # Material
 
 Todo asset de um projeto vem com origem e licença registradas em `assets/LICENCAS.json`. Sem registro, o
-`npx @eljonathas/reelcraft check` reprova o projeto.
+`npx @eljonathas/motionforge check` reprova o projeto.
 
 ## 1. Buscar
 
 ```bash
-npx @eljonathas/reelcraft assets search --kind photo --q "mãos amassando pão, luz de janela"
-npx @eljonathas/reelcraft assets search --kind video --q "ondas batendo em rochas, câmera lenta"
-npx @eljonathas/reelcraft assets search --kind texture --q "papel kraft"
+npx @eljonathas/motionforge assets search --kind photo --q "mãos amassando pão, luz de janela"
+npx @eljonathas/motionforge assets search --kind video --q "ondas batendo em rochas, câmera lenta"
+npx @eljonathas/motionforge assets search --kind texture --q "papel kraft"
 ```
 
 `--kind`: `photo`, `video`, `texture`, `hdri`, `model`, `illustration`, `icon`, `sfx`.
@@ -53,7 +53,7 @@ Olhe as miniaturas antes de baixar. Para cada candidato, confira:
 ## 3. Baixar e registrar
 
 ```bash
-npx @eljonathas/reelcraft assets get pexels:12345        # no diretório do projeto (ou --dir <projeto>)
+npx @eljonathas/motionforge assets get pexels:12345        # no diretório do projeto (ou --dir <projeto>)
 ```
 
 O `get` baixa para `assets/<tipo>/` e grava em `assets/LICENCAS.json`: arquivo, fonte, id, título, autor, link,

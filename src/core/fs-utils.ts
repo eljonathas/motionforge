@@ -46,7 +46,7 @@ const DEFAULT_IGNORED_DIRS = new Set([
   "node_modules",
   ".git",
   ".hyperframes",
-  ".reelcraft",
+  ".motionforge",
   "renders",
   "dist",
   "vendor",

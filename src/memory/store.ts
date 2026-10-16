@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import path from "node:path";
-import { ReelcraftError } from "../core/errors.js";
+import { MotionForgeError } from "../core/errors.js";
 import { pathExists } from "../core/fs-utils.js";
 import { LessonSchema, type Lesson, type LessonScope, type NewLesson } from "./types.js";
 
@@ -13,7 +13,7 @@ export interface MemoryLocation {
   homeDir?: string | undefined;
 }
 
-const MEMORY_SEGMENTS = [".reelcraft", "memoria", "licoes.jsonl"] as const;
+const MEMORY_SEGMENTS = [".motionforge", "memoria", "licoes.jsonl"] as const;
 
 export function memoryFile(scope: LessonScope, location: MemoryLocation): string {
   const base = scope === "global" ? (location.homeDir ?? homedir()) : location.projectDir;
@@ -29,7 +29,7 @@ export async function readLessons(file: string): Promise<Lesson[]> {
     try {
       lessons.push(LessonSchema.parse(JSON.parse(line)));
     } catch (error) {
-      throw new ReelcraftError(
+      throw new MotionForgeError(
         `${file} line ${index + 1} is not a valid lesson: ${(error as Error).message.split("\n")[0] ?? ""}`,
         "Fix or delete that line; each line must be one JSON lesson.",
       );
@@ -57,7 +57,7 @@ function newId(createdAt: string, lesson: NewLesson, taken: ReadonlySet<string>)
     const id = `l_${digest.slice(0, length)}`;
     if (!taken.has(id)) return id;
   }
-  throw new ReelcraftError("Could not generate a unique lesson id.");
+  throw new MotionForgeError("Could not generate a unique lesson id.");
 }
 
 export interface AddContext extends MemoryLocation {
@@ -67,7 +67,7 @@ export interface AddContext extends MemoryLocation {
 
 export async function addLesson(lesson: NewLesson, ctx: AddContext): Promise<Lesson> {
   if (lesson.decision.trim() === "") {
-    throw new ReelcraftError(
+    throw new MotionForgeError(
       "A lesson needs a decision.",
       "Say what was chosen, rejected or changed.",
     );
@@ -108,9 +108,9 @@ export async function forgetLesson(
     );
     return found;
   }
-  throw new ReelcraftError(
+  throw new MotionForgeError(
     `No lesson with id ${id}.`,
-    "List lessons with `reelcraft memory list` to see their ids.",
+    "List lessons with `motionforge memory list` to see their ids.",
   );
 }
 
